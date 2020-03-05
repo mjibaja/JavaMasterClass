@@ -54,6 +54,7 @@ public class Celular {
             System.out.println(contactoViejo.getNombreContacto() + " no está en la lista de contactos");
             return false;
         }
+
         this.listaContactos.set(posViejo,contactoNuevo);
         System.out.println("El contacto anterior " + contactoViejo.getNombreContacto() +" fue reemplazado por " + contactoNuevo.getNombreContacto() );
         return true;

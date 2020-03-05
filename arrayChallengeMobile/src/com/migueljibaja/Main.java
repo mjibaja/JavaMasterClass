@@ -113,10 +113,16 @@ public class Main {
 
         System.out.println("Ingrese el nombre del nuevo contacto :");
         String nuevoNombre = scanner.nextLine();
+        Contacto contactoNuevo = miCelular.consultaContacto(nuevoNombre);
+        if (contactoNuevo != null) {
+            System.out.println("Contacto ya existe\n");
+            return;
+        }
+
         System.out.println("Ingrese el nuevo número ");
         long nuevoCelu = scanner.nextLong();
-        Contacto contactoNuevo = new Contacto(nuevoNombre,nuevoCelu);
-        if (miCelular.actualizaContacto(contactoExistente,contactoNuevo)){
+        Contacto contactoAct = new Contacto(nuevoNombre,nuevoCelu);
+        if (miCelular.actualizaContacto(contactoExistente,contactoAct)){
             System.out.println("Se actualizo correctamente..");
         }else {
             System.out.println("No se pudo actualizar");
