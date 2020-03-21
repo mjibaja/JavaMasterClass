@@ -7,6 +7,7 @@ public class Penguin extends Bird {
 
     @Override
     public void fly() {
+        super.fly();
         System.out.println("I am not very good on that, can I go for a swim instead");
     }
 }
