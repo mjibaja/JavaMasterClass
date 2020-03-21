@@ -93,7 +93,7 @@ public class Main {
                         forward = false;
                     }
                     if (listIterator.hasPrevious()) {
-                        System.out.println("Now playing" + listIterator.previous().getTitle());
+                        System.out.println("Now playing " + listIterator.previous().getTitle());
                     }else{
                         System.out.println("We are at the start");
                         forward = true;
