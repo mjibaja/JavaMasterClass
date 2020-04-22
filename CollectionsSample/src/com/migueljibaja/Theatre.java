@@ -1,6 +1,8 @@
 package com.migueljibaja;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class Theatre {
@@ -23,19 +25,27 @@ public class Theatre {
     }
 
     public boolean reserveSeat(String seatNumber) {
-        Seat requestSeat = null;
-        for(Seat seat : seats) {
-            if (seat.getSeatNumber().equals(seatNumber)) {
-                requestSeat = seat;
-                break;
-            }
-        }
-
-        if (requestSeat == null) {
+        Seat requestSeat = new Seat(seatNumber);
+        int foundSeat = Collections.binarySearch(seats,requestSeat,null);
+        if (foundSeat>=0) {
+            return seats.get(foundSeat).reserve();
+        } else {
             System.out.println("There is no seat " + seatNumber);
             return false;
         }
-        return requestSeat.reserve();
+//        for(Seat seat : seats) {
+//            System.out.print(".");
+//            if (seat.getSeatNumber().equals(seatNumber)) {
+//                requestSeat = seat;
+//                break;
+//            }
+//        }
+//
+//        if (requestSeat == null) {
+//            System.out.println("There is no seat " + seatNumber);
+//            return false;
+//        }
+//        return requestSeat.reserve();
     }
 
     //for testing
@@ -46,12 +56,17 @@ public class Theatre {
         }
     }
 
-    private class Seat {
+    private class Seat implements Comparable<Seat> {
         private String seatNumber;
         private boolean reserved = false;
 
         public Seat(String seatNumber) {
             this.seatNumber = seatNumber;
+        }
+
+        @Override
+        public int compareTo(Seat seat) {
+            return this.seatNumber.compareToIgnoreCase(seat.getSeatNumber());
         }
 
         public boolean reserve() {
