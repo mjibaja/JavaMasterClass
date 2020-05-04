@@ -6,8 +6,17 @@ import java.util.Scanner;
 
 public class Main {
     private static Map<Integer,Location> locations = new HashMap<Integer, Location>();
+    private static DirectionsDir direcciones = new DirectionsDir();
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
+
+        direcciones.addDirection("NORTH","N");
+        direcciones.addDirection("SOUTH","S");
+        direcciones.addDirection("EAST","E");
+        direcciones.addDirection("WEST","W");
+        direcciones.addDirection("QUIT","Q");
+
 
         locations.put(0, new Location(0,"You are sitting in front of a computer learning Java"));
         locations.put(1, new Location(1,"You are standing at the end of a road before a small brick building"));
@@ -37,6 +46,7 @@ public class Main {
         //locations.get(5).addExit("Q", 0);
 
 
+
         int loc = 1;
         while (true) {
             System.out.println(locations.get(loc).getDescription());
@@ -50,7 +60,11 @@ public class Main {
             }
             System.out.println();
 
+
             String direction = scanner.nextLine().toUpperCase();
+            if (direction.length()>1) {
+                direction = direcciones.traduce(direction);
+            }
 
             if(exits.containsKey(direction)) {
                 loc = exits.get(direction);
