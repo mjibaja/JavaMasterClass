@@ -6,7 +6,6 @@ public class Main {
         Dog dog = new Dog("Yorkie");
         dog.breathe();
         dog.eat();
-        System.out.println(dog.getName());
 
         Parrot parrot = new Parrot("Aurora");
         parrot.breathe();
