@@ -24,7 +24,7 @@ public class Main {
         myLinkedList.traverse(myLinkedList.getRoot());
 */
 	    SearchTree myTree = new SearchTree(null);
-        System.out.println("Prueba");
+
         myTree.traverse(myTree.getRoot());
         String stringData = "Darwin Brisbane Perth Melbourne Canberra Adelaide Sydney Canberra";
         String[] data = stringData.split(" ");
